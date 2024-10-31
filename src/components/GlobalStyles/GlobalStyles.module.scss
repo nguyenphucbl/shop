@@ -1,0 +1,41 @@
+@import 'normalize.css';
+
+:root {
+  --grey: #242424;
+  --white: #fff;
+  --blue: #1971c2;
+  --text-color: #828282;
+  --header-height: 60px;
+
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  overflow-y: overlay;
+  background-color: var(--grey);
+  color: var(--white);
+
+  a {
+    text-decoration: none;
+    color: var(--text-color);
+  }
+}
+
+
+button {
+  border: none;
+  outline: none;
+}

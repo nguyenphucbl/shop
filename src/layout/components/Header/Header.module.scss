@@ -1,0 +1,44 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-height);
+  background-color: var(--grey);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--white);
+}
+
+.logo {
+  height: 30px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-item {
+  padding: 0 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+
+  &:hover {
+    color: var(--white);
+    background-color: #3e3e3e;
+  }
+
+  &.active {
+    color: var(--white);
+    background-color: #3e3e3e;
+  }
+}
+
+.cart-icon {
+  margin-left: 4px;
+}

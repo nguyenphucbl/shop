@@ -1,0 +1,44 @@
+.wrapper {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;
+  padding: 8px 10px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  background-color: var(--white);
+  color: var(--text-color);
+  border-radius: 8px;
+  border: 1px solid var(--white);
+  user-select: none;
+  transition: background-color linear 0.3s;
+
+
+  +.wrapper {
+    margin-left: 10px;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.primary {
+  background-color: var(--blue);
+  color: var(--white);
+
+  &:hover {
+    background-color: #0f5f9b;
+  }
+}
+
+//NOTE: button sizes
+
+.sm {
+  min-width: 80px
+}
+
+.lg {
+  min-width: 120px
+}
