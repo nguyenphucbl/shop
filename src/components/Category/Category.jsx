@@ -1,13 +1,13 @@
-import styles from './Carousel.module.scss';
+import styles from './Category.module.scss';
 import classNames from 'classnames/bind';
 import CarouselItem from './CarouselItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useRef, useState } from 'react';
-import { getCarouselItems } from '~/services/carouselService';
+import { getCategoryItems } from '~/services/carouselService';
 const cx = classNames.bind(styles);
 
-export default function Carousel() {
+export default function Category() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const carouselRef = useRef(null);
@@ -18,7 +18,7 @@ export default function Carousel() {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const data = await getCarouselItems(0, 8);
+        const data = await getCategoryItems(0, 4);
         setData(data);
         setIsLoading(false);
       } catch (error) {
