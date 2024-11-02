@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import images from '~/assets/images';
 import { Button } from '~/components/Button';
 import config from '~/config';
@@ -11,7 +11,9 @@ const cx = classNames.bind(styles);
 export default function Header() {
   return (
     <header className={cx('wrapper', 'container-fluid')}>
-      <img src={images.logo} alt='logo' className={cx('logo')} />
+      <Link to={config.routes.home}>
+        <img src={images.logo} alt='logo' className={cx('logo')} />
+      </Link>
       <nav className={cx('nav')}>
         <Menu to={config.routes.home}>Home</Menu>
         <Menu to={config.routes.products}>Products</Menu>

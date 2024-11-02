@@ -1,0 +1,24 @@
+.product-filter {
+  margin-top: 20px;
+}
+
+.list-category {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+
+.item-link {
+  display: block;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: linear 0.3s;
+
+  &:hover {
+    color: var(--white);
+    background-color: #484848;
+
+  }
+}

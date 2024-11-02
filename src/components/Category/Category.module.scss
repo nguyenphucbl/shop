@@ -14,6 +14,8 @@
   scrollbar-color: transparent transparent;
   transition: transform 0.5s;
   scroll-behavior: smooth;
+  scroll-snap-type: mandatory;
+  user-select: none;
 }
 
 .controls {
@@ -82,8 +84,8 @@
 
 .title {
   font-weight: bold;
-  font-size: 2.4rem;
-  text-shadow: 0 0 2px #b3b3b3;
+  font-size: 3rem;
+  text-shadow: 0 0 3px #ab0000;
 }
 
 .button {

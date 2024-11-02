@@ -1,11 +1,12 @@
 import * as httpRequest from '~/utils/httpRequest';
-const getCarouselItems = async (offset, limit) => {
+const getCarouselItems = async (offset, limit, signal) => {
   try {
     const data = await httpRequest.get('products', {
       params: {
         offset,
         limit,
       },
+      signal,
     });
     return data;
   } catch (error) {
