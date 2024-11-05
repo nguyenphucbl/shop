@@ -8,7 +8,7 @@ const getCarouselItems = async (offset, limit, signal) => {
       },
       signal,
     });
-    return data;
+    return data.data;
   } catch (error) {
     console.error('Error fetching carousel items', error);
   }
@@ -21,9 +21,21 @@ const getCategoryItems = async (offset, limit) => {
         limit,
       },
     });
-    return data;
+    return data.data;
   } catch (error) {
     console.error('Error fetching carousel items', error);
   }
 };
-export { getCarouselItems, getCategoryItems };
+const getProducts = async (params, signal) => {
+  try {
+    const data = await httpRequest.get('products', {
+      params,
+      signal,
+    });
+
+    return data;
+  } catch (error) {
+    console.error('Error fetching products', error);
+  }
+};
+export { getCarouselItems, getCategoryItems, getProducts };
