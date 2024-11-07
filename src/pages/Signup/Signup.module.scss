@@ -1,0 +1,47 @@
+.container {
+  margin-top: 60px;
+
+}
+
+.wrapper {
+  text-align: left;
+  color: var(--text-color);
+  margin: 0 auto;
+  font-size: 1.6rem;
+  width: 360px;
+}
+
+.header {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.input {
+  margin-bottom: 14px;
+
+  &.error {
+    border-color: red;
+  }
+}
+
+.error-field {
+  color: red;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.left {
+  text-align: right;
+
+  .link {
+    color: var(--blue);
+    text-decoration: underline;
+  }
+}
+
+.button {
+  font-weight: 600;
+  font-size: 1.8rem;
+}

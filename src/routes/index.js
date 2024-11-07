@@ -1,5 +1,5 @@
 import config from '~/config';
-import { Home, Products } from '~/pages';
+import { Home, ProductDetail, Products, Cart, Login, Signup } from '~/pages';
 
 const publicRoutes = [
   {
@@ -10,6 +10,23 @@ const publicRoutes = [
     path: config.routes.products,
     element: Products,
   },
+  {
+    path: config.routes.productDetail,
+    element: ProductDetail,
+  },
+  {
+    path: config.routes.login,
+    element: Login,
+  },
+  {
+    path: config.routes.signup,
+    element: Signup,
+  },
 ];
-
-export { publicRoutes };
+const privateRoutes = [
+  {
+    path: config.routes.cart,
+    element: Cart,
+  },
+];
+export { publicRoutes, privateRoutes };

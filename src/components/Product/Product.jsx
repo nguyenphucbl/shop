@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '~/stores/middlewares/productMiddleware';
 import { Image } from '../Image';
 import '~/assets/styles/pagination.less';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 export default function Product() {
   const { products, loading, filter } = useSelector(state => state.products);
-  console.log('🚀 ~ Product ~ products:', products);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -35,7 +35,11 @@ export default function Product() {
                 <div className={cx('product-item')}>
                   <Image src={product.images[0]} alt='product' className={cx('product-img')} />
                   <div className={cx('content')}>
-                    <h3 className={cx('product-title')}>{product.title}</h3>
+                    <h3 className={cx('product-title')}>
+                      <Link className={cx('link-product')} to={`/product/${product.id}`}>
+                        {product.title}
+                      </Link>
+                    </h3>
                     <p className={cx('product-desc')}>{product.description}</p>
                     <div className={cx('info')}>
                       <p className={cx('product-price')}>${product.price}</p>

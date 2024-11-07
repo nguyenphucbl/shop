@@ -1,0 +1,17 @@
+.input {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1.6rem;
+  outline: none;
+
+  &:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+
+  &.error {
+    border-color: red;
+  }
+}

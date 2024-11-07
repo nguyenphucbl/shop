@@ -38,4 +38,14 @@ const getProducts = async (params, signal) => {
     console.error('Error fetching products', error);
   }
 };
-export { getCarouselItems, getCategoryItems, getProducts };
+const getProductById = async (id, signal) => {
+  try {
+    const data = await httpRequest.get(`products/${id}`, {
+      signal,
+    });
+    return data.data;
+  } catch (error) {
+    console.error('Error fetching product by id', error);
+  }
+};
+export { getCarouselItems, getCategoryItems, getProducts, getProductById };

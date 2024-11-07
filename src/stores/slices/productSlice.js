@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getProduct } from '../middlewares/productMiddleware';
+import { getProduct, getProductDetail } from '../middlewares/productMiddleware';
+
 const initialState = {
   products: [],
+  productDetail: null,
   filter: {
     limit: 12,
     offset: 0,
@@ -30,6 +32,23 @@ export const productsSlice = createSlice({
         state.loading = false;
       })
       .addCase(getProduct.rejected, (state, action) => {
+        state.loading = false;
+        if (action.error.name === 'AbortError') {
+          state.error = 'Request was aborted';
+        } else {
+          state.error = action.error;
+        }
+      })
+
+      //NOTE: getProductById
+      .addCase(getProductDetail.pending, state => {
+        state.loading = true;
+      })
+      .addCase(getProductDetail.fulfilled, (state, action) => {
+        state.productDetail = action.payload;
+        state.loading = false;
+      })
+      .addCase(getProductDetail.rejected, (state, action) => {
         state.loading = false;
         if (action.error.name === 'AbortError') {
           state.error = 'Request was aborted';
