@@ -10,12 +10,20 @@ import config from '~/config';
 import styles from './Header.module.scss';
 import Menu from './Menu';
 import { logout } from '~/stores/slices/authSlice';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getProfileUser } from '~/stores/middlewares/authMiddleware';
+import { Image } from '~/components';
 const cx = classNames.bind(styles);
 export default function Header() {
+  const [active, setActive] = useState(false);
   const { user, profileStatus } = useSelector(state => state.auth);
+  const { count } = useSelector(state => state.cart);
+
+  const info = useRef(null);
   const dispatch = useDispatch();
+  const toggleActive = () => {
+    setActive(!active);
+  };
 
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -43,6 +51,7 @@ export default function Header() {
         <Menu to={config.routes.cart}>
           Cart
           <FontAwesomeIcon icon={faCartShopping} className={cx('cart-icon')} />
+          {count > 0 && <span className={cx('cart-count')}>{count}</span>}
         </Menu>
       </nav>
       <div>
@@ -51,11 +60,19 @@ export default function Header() {
             <span className='visually-hidden'>Loading...</span>
           </div>
         ) : user ? (
-          <div>
-            {user.email}
-            <Button primary onClick={handleLogout}>
-              Logout
-            </Button>
+          <div className={cx('account')}>
+            <Image src={user.avatar} alt='avatar' className={cx('avatar')} onClick={toggleActive} />
+            <div ref={info} className={cx('info', { active })}>
+              <Link to='/user' className={cx('info-item')}>
+                User
+              </Link>
+              <Link to='/setting' className={cx('info-item')}>
+                Settings
+              </Link>
+              <div className={cx('info-item')} onClick={handleLogout}>
+                Logout
+              </div>
+            </div>
           </div>
         ) : (
           <>

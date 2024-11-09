@@ -7,18 +7,28 @@ import { getProduct } from '~/stores/middlewares/productMiddleware';
 import { Image } from '../Image';
 import '~/assets/styles/pagination.less';
 import { Link } from 'react-router-dom';
+import { addToCart } from '~/stores/slices/cartSlice';
 
 const cx = classNames.bind(styles);
 export default function Product() {
   const { products, loading, filter } = useSelector(state => state.products);
 
+  const { user } = useSelector(state => state.auth);
   const dispatch = useDispatch();
+  const handleAddToCart = product => {
+    if (!user) {
+      alert('Please login to add product to cart');
+      return;
+    }
+    dispatch(addToCart(product));
+  };
   useEffect(() => {
     const action = dispatch(getProduct(filter));
     return () => {
       action.abort();
     };
   }, [dispatch, filter]);
+
   return (
     <div className={cx('list-product')}>
       {loading ? (
@@ -43,7 +53,12 @@ export default function Product() {
                     <p className={cx('product-desc')}>{product.description}</p>
                     <div className={cx('info')}>
                       <p className={cx('product-price')}>${product.price}</p>
-                      <Button primary size='sm' className={cx('btn-add')}>
+                      <Button
+                        onClick={() => handleAddToCart(product)}
+                        primary
+                        size='sm'
+                        className={cx('btn-add')}
+                      >
                         Add to Cart
                       </Button>
                     </div>

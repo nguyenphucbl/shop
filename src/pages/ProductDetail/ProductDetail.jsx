@@ -8,11 +8,13 @@ import { Image } from '~/components';
 import { Button } from '~/components/Button';
 import { getProductDetail } from '~/stores/middlewares/productMiddleware';
 import styles from './ProductDetail.module.scss';
+import { addToCart } from '~/stores/slices/cartSlice';
 const cx = classNames.bind(styles);
 export default function ProductDetail() {
   const [activeIndex, setActiveIndex] = useState(0);
   const { id: productId } = useParams();
   const { productDetail, loading } = useSelector(state => state.products);
+
   const dispatch = useDispatch();
   const handleNext = () => {
     const isLastSlide = activeIndex === productDetail.images.length - 1;
@@ -23,6 +25,9 @@ export default function ProductDetail() {
     const isFirstSlide = activeIndex === 0;
     const newIndex = isFirstSlide ? productDetail.images.length - 1 : activeIndex - 1;
     setActiveIndex(newIndex);
+  };
+  const handleAddToCart = () => {
+    dispatch(addToCart(productDetail));
   };
   useEffect(() => {
     dispatch(getProductDetail(productId));
@@ -76,7 +81,9 @@ export default function ProductDetail() {
               <p className={cx('desc')}>{productDetail?.description}</p>
               <div className={cx('items-bottom')}>
                 <p className={cx('price')}>${productDetail?.price}</p>
-                <Button primary>Add to cart</Button>
+                <Button onClick={handleAddToCart} primary>
+                  Add to cart
+                </Button>
               </div>
             </div>
           </div>

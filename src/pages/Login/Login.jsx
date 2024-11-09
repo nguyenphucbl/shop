@@ -29,7 +29,7 @@ export default function Login() {
         Cookies.set('refresh_token', refresh_token);
         dispatch(getProfileUser());
 
-        navigate(config.routes.home);
+        navigate(-1, { replace: true });
       })
       .catch(error => {
         console.log(error);

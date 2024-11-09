@@ -1,18 +1,15 @@
-import { useEffect, useState } from 'react';
-import styles from './Search.module.scss';
 import classNames from 'classnames/bind';
-import { useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProduct } from '~/stores/middlewares/productMiddleware';
+import { useSearchParams } from 'react-router-dom';
 import { setFilter } from '~/stores/slices/productSlice';
+import styles from './Search.module.scss';
 const cx = classNames.bind(styles);
 export default function Search() {
   const [search, setSearch] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const { filter } = useSelector(state => state.products);
-  console.log('🚀 ~ Search ~ filter:', filter);
   const dispatch = useDispatch();
-  const params = Object.fromEntries(searchParams);
 
   const handleChange = e => {
     setSearch(e.target.value);
